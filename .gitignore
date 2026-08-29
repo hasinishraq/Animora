@@ -1,0 +1,18 @@
+﻿# Dependencies
+node_modules/
+vendor/
+
+# Build output
+assets/css/output.css
+
+# Environment / secrets
+.env
+config/db.php
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

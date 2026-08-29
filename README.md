@@ -1,15 +1,17 @@
 ﻿<h1 align="center">
+  <img src="assets/images/logomain.png" alt="Animora Logo" height="80"/><br/>
   🐾 Animora
 </h1>
 
 <p align="center">
-  <em>A comprehensive pet welfare platform — adoption, rescue, marketplace, services & more</em>
+  <em>A full-stack pet welfare platform — adoption, rescue, marketplace, vet services, donations & more</em>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/PHP-8+-777BB4?style=for-the-badge&logo=php&logoColor=white" />
-  <img src="https://img.shields.io/badge/MySQL-DB-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img src="https://img.shields.io/badge/Pattern-MVC-green?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-4.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Architecture-MVC-green?style=for-the-badge" />
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
 </p>
 
@@ -17,47 +19,63 @@
 
 ## 📖 Overview
 
-**Animora** is a full-featured pet welfare web application built with PHP following the MVC (Model-View-Controller) architectural pattern. It serves as a unified hub for pet adoption, rescue reporting, pet-related product marketplace, veterinary services, donations, and real-time messaging — all under one roof.
+**Animora** is a full-stack PHP web application that serves as a one-stop hub for pet welfare. It connects pet lovers, adopters, volunteers, veterinarians, pet care providers, and product suppliers on a single platform — with role-based dashboards tailored to each user type.
 
-Whether you are a pet lover looking to adopt, a volunteer helping with rescues, a vet offering services, or a supplier listing products, Animora provides a tailored experience for every role.
+The app is built with **vanilla PHP** (MVC-inspired architecture), **MySQL**, **Tailwind CSS v4**, and features custom animations, a walking-cat navbar mascot, and a rich, responsive UI.
 
 ---
 
 ## ✨ Features
 
 ### 🐶 Pet Adoption
-- Browse available pets for adoption
-- Post pets for adoption
+- Browse all pets available for adoption with breed, age & image filters
+- Submit adoption applications with a detailed form
+- Post your own pet for adoption with photo upload
+- Admin approval workflow for adoption posts
+- Applicant management (approve / decline applications)
 
-### 🚨 Rescue Operations
-- Report animals in distress
-- Manage and coordinate rescue missions (volunteer/admin)
+### 🚨 Rescue & Volunteer System
+- Volunteers can browse available rescue missions
+- Accept and update rescue mission statuses
+- Volunteer leaderboard (top contributors)
+- Volunteer dashboard with active & completed missions
 
 ### 🛒 Marketplace
-- Browse and purchase pet products
-- Suppliers can list and manage products
-- Order management system with cart support
+- Full product listing with categories and details
+- Shopping cart with quantity management
+- Checkout and order processing
+- Supplier dashboard: add, manage & delete products
+- Order management for suppliers
+- User profile page with purchase history
 
-### 🏥 Pet Services
-- Book veterinary and grooming services
-- Vets and petcare providers can manage their service listings
+### 🏥 Veterinary Services
+- Browse available vets and their specialties
+- Book vet appointments with slot availability check
+- View, manage, and track your bookings
+- Vet dashboard: manage appointments & send messages
+- Vet slot scheduling system
+
+### ✂️ Grooming Services
+- Browse and book grooming services
+- Service confirmation flow
 
 ### 💰 Donations & Fundraising
 - Donate to animal welfare causes
 - Create and manage fundraising campaigns
 
 ### 💬 Messaging
-- In-platform chat between users, vets, volunteers, and admins
+- In-platform messaging between users and vets
 
 ### 👤 Multi-Role User System
-| Role | Dashboard |
+
+| Role | Key Pages |
 |------|-----------|
-| **User** | Adopt pets, book services, shop, donate |
-| **Admin** | Full platform management |
-| **Volunteer** | Manage rescue operations |
-| **Vet** | Manage and offer services |
-| **Pet Care Provider** | Manage pet care services |
-| **Supplier** | Manage products and orders |
+| **User** | Home, Adoption, Marketplace, Vet Booking, Grooming, Add Pet |
+| **Admin** | Dashboard, User Management, Post Approvals |
+| **Volunteer** | Dashboard, Available Missions, My Missions, Leaderboard |
+| **Vet** | Dashboard, Appointments, Slot Management, Messages |
+| **Pet Care Provider** | Service Home |
+| **Supplier** | Dashboard, Add Product, Manage Products, Orders |
 
 ---
 
@@ -65,24 +83,83 @@ Whether you are a pet lover looking to adopt, a volunteer helping with rescues, 
 
 ```
 Animora/
-├── index.php                  # Application entry point
+├── index.php                        # Landing page (home)
+├── .gitignore
+│
 ├── config/
-│   ├── database.php           # Database connection
-│   └── constants.php          # App-wide constants
-├── routes/
-│   └── web.php                # Route definitions
-├── middleware/
-│   └── authMiddleware.php     # Authentication middleware
-├── controllers/
-│   ├── auth/                  # Login, Register, Logout
-│   ├── adoption/              # Browse & post pets
-│   ├── rescue/                # Report & manage rescues
-│   ├── marketplace/           # Products, orders
-│   ├── services/              # Book & manage services
-│   ├── donations/             # Donate & fundraising
-│   ├── messaging/             # Chat
-│   └── dashboard/             # Role-based dashboards
-├── models/
+│   ├── db.php                       # MySQL connection
+│   └── constants.php                # App-wide constants
+│
+├── auth/                            # Auth pages (outside MVC)
+│   ├── login.php
+│   ├── register.php
+│   └── logout.php
+│
+├── user/                            # User-facing pages
+│   ├── user-home.php
+│   ├── user-adoption.php            # Browse pets for adoption
+│   ├── user-add-pet.php             # Post a pet for adoption
+│   ├── post-adoption.php            # Adoption application form
+│   ├── submit-adoption.php
+│   ├── process-adoption.php
+│   ├── process-approve.php
+│   ├── process-decline.php
+│   ├── marketplacehome.php
+│   ├── marketplace-all-product.php
+│   ├── marketplace-product-details.php
+│   ├── marketplace-cart.php
+│   ├── marketplace-profile.php
+│   ├── service-home.php
+│   ├── service-book.php
+│   ├── service-booking-process.php
+│   ├── user-grooming-services.php
+│   ├── user-vet-appoint-book.php
+│   ├── user-vet-appoint-view.php
+│   ├── user-article.php
+│   ├── fetch_breeds.php             # AJAX: dynamic breed dropdown
+│   ├── get_available_slots.php      # AJAX: vet slot availability
+│   └── add-animal.php
+│
+├── admin/                           # Admin panel
+│   ├── admin-dashboard.php
+│   ├── admin-user-management.php
+│   └── admin-post-approve.php
+│
+├── vet/                             # Vet panel
+│   ├── vet-dashboard.php
+│   ├── vet-appointment.php
+│   ├── vet-manage-slots.php
+│   └── vet-message.php
+│
+├── volunteer/                       # Volunteer panel
+│   ├── volunteer-dashboard.php
+│   ├── volunteer-available-mission.php
+│   ├── volunteer-mission.php
+│   ├── volunteer-top-list.php
+│   ├── volunteer-accept-mission.php
+│   └── volunteer-update-mission-status.php
+│
+├── marketplace/                     # Supplier panel
+│   ├── product-supply-dashboard.php
+│   ├── product-supply-addprod.php
+│   ├── product-supply-order.php
+│   ├── all-products.php
+│   └── delete-product.php
+│
+├── services/                        # Pet care provider
+│   └── service-home.php
+│
+├── controllers/                     # MVC Controllers
+│   ├── auth/
+│   ├── adoption/
+│   ├── rescue/
+│   ├── marketplace/
+│   ├── services/
+│   ├── donations/
+│   ├── messaging/
+│   └── dashboard/
+│
+├── models/                          # MVC Models
 │   ├── User.php
 │   ├── Pet.php
 │   ├── Product.php
@@ -91,14 +168,29 @@ Animora/
 │   ├── Service.php
 │   ├── Rescue.php
 │   └── Donation.php
-├── views/
-│   ├── auth/                  # Login & Register pages
-│   ├── dashboard/             # Role-specific home pages
-│   └── includes/              # Shared partials (header, navbar, footer)
-└── assets/
-    ├── css/                   # Stylesheets
-    ├── js/                    # JavaScript files
-    └── images/                # Static images
+│
+├── views/                           # Shared views/partials
+│   ├── auth/
+│   ├── dashboard/
+│   └── includes/                   # header, navbar, footer
+│
+├── routes/
+│   └── web.php
+│
+├── middleware/
+│   └── authMiddleware.php
+│
+├── assets/
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── user_home.css
+│   │   └── input.css               # Tailwind source
+│   ├── js/
+│   └── images/
+│
+├── uploads/                         # User-uploaded files
+├── package.json                     # Tailwind CSS v4 via npm
+└── package-lock.json
 ```
 
 ---
@@ -107,9 +199,10 @@ Animora/
 
 ### Prerequisites
 
-- PHP **8.0+**
-- MySQL / MariaDB
-- A local server environment (e.g., [XAMPP](https://www.apachefriends.org/), [WAMP](https://www.wampserver.com/), or [Laragon](https://laragon.org/))
+- **PHP 8.0+**
+- **MySQL / MariaDB**
+- A local server environment: [XAMPP](https://www.apachefriends.org/), [Laragon](https://laragon.org/), or [WAMP](https://www.wampserver.com/)
+- **Node.js** (optional — only needed to recompile Tailwind CSS)
 
 ### Installation
 
@@ -124,20 +217,27 @@ Animora/
    - Laragon: `C:/laragon/www/Animora`
 
 3. **Create the database**
-   - Open **phpMyAdmin** and create a new database named `animora`
-   - Import the SQL schema (if provided)
+   - Open **phpMyAdmin** and create a database named `animora`
+   - Import the SQL schema file (if provided in the repo)
 
 4. **Configure the database connection**
-   - Open `config/database.php` and update the credentials:
+
+   Open `config/db.php` and update:
    ```php
-   define('DB_HOST', 'localhost');
-   define('DB_NAME', 'animora');
-   define('DB_USER', 'root');
-   define('DB_PASS', '');
+   $host = 'localhost';
+   $db   = 'animora';
+   $user = 'root';
+   $pass = '';
    ```
 
-5. **Run the app**
-   - Start Apache & MySQL from your server control panel
+5. **(Optional) Compile Tailwind CSS**
+   ```bash
+   npm install
+   npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --watch
+   ```
+
+6. **Start the app**
+   - Start Apache & MySQL in your server control panel
    - Visit: `http://localhost/Animora`
 
 ---
@@ -146,23 +246,23 @@ Animora/
 
 | Layer | Technology |
 |-------|------------|
-| **Backend** | PHP 8+ (custom MVC) |
-| **Database** | MySQL |
-| **Frontend** | HTML5, CSS3, Vanilla JavaScript |
-| **Architecture** | MVC (Model-View-Controller) |
-| **Auth** | Session-based with middleware |
+| **Backend** | PHP 8+ |
+| **Database** | MySQL (via MySQLi) |
+| **Frontend** | HTML5, Tailwind CSS v4, Vanilla JS |
+| **Fonts** | Google Fonts — Fredoka, Nunito |
+| **Architecture** | MVC-inspired |
+| **Auth** | PHP Sessions with middleware |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! To get started:
+Contributions are welcome!
 
 1. Fork the repository
-2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes and commit: `git commit -m "Add some feature"`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a Pull Request
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add: your feature"`
+4. Push and open a Pull Request
 
 ---
 

@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+/*----------------------above nav ---------*/
+.above-nav {
+    width: 100%;
+    background-color: #f4bd9f;
+}
+
+.above-nav-box {
+    max-width: 1200px;
+    /* keeps content centered */
+    margin: 0 auto;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    /* white text color */
+}
+
+
+
+
+
+/* Nav container */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    /* Dark background for nav */
+}
+
+/* Left navigation menu */
+.nav-left ul {
+    display: flex;
+    list-style-type: none;
+
+}
+
+.nav-left ul li {
+    margin: 0 15px;
+    color: #89b5a6;
+}
+
+.nav-left ul li a {
+    color: #89b5a6;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* Center logo */
+.nav-center .logo img {
+    width: 300px;
+    /* Adjust the logo size */
+}
+
+/* Right section (login, signup, social icons) */
+.nav-right ul {
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-right ul li {
+    margin: 0 10px;
+}
+
+.nav-right ul li a {
+    color: #89b5a6;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nav-right ul li img {
+    width: 30px;
+    /* Adjust icon size */
+    height: 30px;
+}
+
+
+
+/* Ensure your buttons are correctly styled */
+.nav-right ul li a.button {
+    background-color: #A0C1B1;
+    /* Button color */
+    padding: 10px 20px;
+    border-radius: 25px;
+    color: white !important;
+    /* Text color inside the button */
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.3s;
+
+}
+
+.nav-right ul li a.button:hover {
+    background-color: #b5821d;
+    /* Darker shade on hover */
+}
+
+
+
+/*--------------------hero-------------*/
+
+.dashboard {
+    height: 450px;
+    background-image: url('/assets/images/catadore.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    /* Needed for absolute positioning of the container */
+}
+
+.centered-boxes-container {
+    position: absolute;
+    /* Position relative to .dashboard */
+    bottom: -40px;
+    /* Move it up by half the box height */
+    left: 50%;
+    /* Initial horizontal centering */
+    transform: translateX(-50%);
+    /* Adjust for container width */
+    display: flex;
+    /* Arrange boxes in a row */
+    gap: 20px;
+    /* Spacing between boxes */
+    padding: 20px 0;
+    /* Add vertical padding to the container */
+}
+
+.box {
+    width: 200px;
+    /* Set the width */
+    height: 200px;
+    /* Set the height */
+    background-color: red;
+    /* Example styling */
+    color: #333;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 200px;
+    /* Vertically center single-line text */
+    font-size: 1.5em;
+    box-sizing: border-box;
+    /* Include padding and border in the element's total width and height */
+    /* Add any other styling you desire */
+}
+
+.dashboard svg {
+    margin-top: 180px;
+}
+
+
+
+
+/*-------------------------adoption------------------------*/
+
+/* Waiting Section Styles */
+.waiting {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff;
+    padding-bottom: 100px;
+    /* Light gray background */
+}
+
+.waiting h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    /* Adjust as needed */
+}
+
+.waiting p {
+    color: #777;
+    margin-bottom: 30px;
+    font-size: 1em;
+    /* Adjust as needed */
+}
+
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    /* Responsive grid */
+    gap: 20px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    /* Add some padding on the sides for wider screens */
+}
+
+.pet-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    /* Add a subtle hover effect */
+}
+
+.pet-card:hover {
+    transform: scale(1.05);
+}
+
+.pet-card img {
+    width: 100%;
+    display: block;
+    height: auto;
+    border-bottom: 1px solid #eee;
+    /* Subtle separator */
+}
+
+.pet-card h3 {
+    padding: 15px;
+    text-align: center;
+    margin: 0;
+    color: #555;
+    font-size: 1.1em;
+}
+
+.more-button {
+    background-color: #fdd835;
+    /* Yellow button color */
+    color: #fff;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.more-button:hover {
+    background-color: #fbc02d;
+    /* Darker yellow on hover */
+}
+
+
+/*-----------------------------------------vet ---------------------*/
+
+.vet {
+
+    margin-top: -10px;
+    height: 450px;
+
+    background-color: #f7b9a6;
+    text-align: center;
+}
+
+.vet h2 {
+    font-family: 'Dongle', sans-serif;
+    font-size: 60px;
+    color: #67837D;
+    margin-bottom: 10px;
+}
+
+.vet p {
+    font-size: 18px;
+    color: #666;
+    padding-bottom: 40px;
+
+}
+
+.vet-section {
+    display: flex;
+    justify-content: space-around;
+}
+
+.vet-section img {
+    height: 400px;
+    width: 400px;
+}
+
+.vet-section button {
+    padding: 10px 50px;
+    border-radius: 10px;
+    border: solid;
+    background: #e2b93e;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
